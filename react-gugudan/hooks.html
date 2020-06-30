@@ -1,0 +1,44 @@
+<!-- <html>
+  <head>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const Gugudan = () => {
+        const [first, setFirst] = React.useState(Math.ceil(Math.random() * 9));
+        const [second, setSecond] = React.useState(Math.ceil(Math.random() * 9));
+        const [value, setValue] = React.useState("");
+        const [result, setResult] = React.useState("");
+
+        const handleChange = (e) => {
+          setValue(e.target.value);
+        };
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          setResult(first * second === parseInt(value) ? "ok" : "not ok");
+        };
+
+        const onSubmit = () => {};
+        return (
+          <React.Fragment>
+            <div>
+              {first} x {second}
+            </div>
+            <form onSubmit={handleSubmit}>
+              <input type="number" value={value} onChange={handleChange} />
+              <button type="submit">Go</button>
+            </form>
+            <div>{result}</div>
+          </React.Fragment>
+        );
+      };
+    </script>
+    <script type="text/babel">
+      ReactDOM.render(<Gugudan />, document.querySelector("#root"));
+    </script>
+  </body>
+</html> -->
