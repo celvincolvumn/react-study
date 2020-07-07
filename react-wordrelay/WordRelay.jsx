@@ -1,41 +1,31 @@
 const React = require("react");
 const bindAll = require("lodash.bindall");
+const { render } = require("react-dom");
 
-class WordRelay extends React.Component {
-  constructor(props) {
-    super(props);
+const WordRelay = () => {
+  const [word, setWord] = useState("Tom");
+  const [value, setValue] = useState();
+  const [result, setResult] = useState();
 
-    this.state = {
-      word: "Tom",
-    };
-    bindAll(this, ["handleOnSubmit", "handleOnChange"]);
-  }
-
-  handleOnSubmit(e) {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    this.setState(() => {
-      return {
-        result: this.state.word[this.state.word.length - 1] === this.state.value[0] ? "OK" : "NOT OK",
-      };
-    });
-  }
+    setResult(this.state.word[this.state.word.length - 1] === this.state.value[0] ? "OK" : "NOT OK");
+  };
 
-  handleOnChange(e) {
-    this.setState({ value: e.target.value });
-  }
+  const handleOnChange = (e) => {
+    setValue(e.target.value);
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <div>{this.state.word}</div>
-        <form onSubmit={this.handleOnSubmit}>
-          <input value={this.state.value} onChange={this.handleOnChange} />
-          <button type="submit">Go</button>
-          <div>{this.state.result}</div>
-        </form>
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <div>{word}</div>
+      <form onSubmit={handleOnSubmit}>
+        <input value={value} onChange={handleOnChange} />
+        <button type="submit">Go</button>
+        <div>{result}</div>
+      </form>
+    </React.Fragment>
+  );
+};
 
 module.exports = WordRelay;
